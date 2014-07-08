@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>mis fechas</title>
+        <h:outputStylesheet library="css" name="estilo.css"/>
+        
+    </h:head>
+        
+        <h:body>
+            
+            
+            <h:form>
+            <p:menubar>
+           
+            
+                <p:menuitem value="volver" action="user" ajax="false" icon="back" />
+                <p:menuitem action="#{bean1.desconecta}" value="desconecta" ajax="false" icon="exit"/>
+                
+                
+            
+            
+            
+            
+            
+        </p:menubar>
+        
+        
+        </h:form>
+            
+            
+        <h:form style="position: absolute;top: 200px" id="form2">
+          
+          <p:growl for="elimina_mensaje" id="growl" life="6000" />
+          
+          <p:dataTable id="t2" var="lista" value="#{bean2.listaFechasPersona}" style="height: auto;width: 250px" selection="#{bean2.listaFechasEliminar}" rowKey="#{lista}">
+          
+          
+          
+              
+              
+              
+              <p:column headerText="fecha">
+                  
+                  
+                  <h:outputText id="out1" value="#{lista}"/>
+                  
+              </p:column>
+              
+              
+              <p:column id="sel1" selectionMode="multiple" style="width: 2%">
+                  
+                  
+              </p:column>
+          
+              
+              
+      </p:dataTable>    
+          
+         <p:commandButton id="multiViewButton" value="eliminar" icon="cancel"  
+                          ajax="false"  action="#{bean2.eliminaFecha}"  />
+        
+         </h:form>
+        
+        </h:body>
+        
+</html>
+    

@@ -1,0 +1,98 @@
+root { 
+    display: block;
+}
+
+
+body{
+    
+    background-color: orange;
+    
+    
+}
+
+
+
+
+
+
+.boton1{
+    
+    background-color: blue;
+    color: black;
+    position: fixed;
+    top:0px;
+    left: 1000px;
+       
+    
+}
+
+
+.boton2{
+    
+    
+    color: black;
+    position: fixed;
+    top: 300px;
+    left: 0px;
+       
+    
+    
+}
+
+
+
+
+
+
+.form1{
+    
+    
+    position: absolute;
+    top: 200px;
+    
+}
+
+
+
+.ui-icon.back{
+    
+    background-image: url("#{resource['images:arrow-55-16.png']}");
+    
+    
+}
+
+
+
+
+
+.ui-icon.ok{
+    
+    background-image: url("#{resource['images:check-mark-6-16.png']}");
+    
+    
+}
+
+.ui-icon.cancel{
+    
+    background-image: url("#{resource['images:x-mark-16.png']}");
+    
+    
+}
+
+
+.ui-icon.exit{
+    
+    background-image: url("#{resource['images:exit2.png']}");
+}
+
+.ui-icon.calendar{
+    
+    background-image: url("#{resource['images:calendar.png']}");
+}
+
+
+
+.ui-growl {
+    
+    left:20px;
+}

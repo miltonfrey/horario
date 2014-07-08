@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+    
+    
+    
+    <h:head>
+        
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <h:outputScript library="js" name="calendar_es.js"/>
+        
+    </h:head>
+    
+    
+    <h:body>
+        
+        <h:outputText value="#{bean2.param}"/>
+        
+        
+        
+        <h:form>
+            <h:outputLabel for="out1" value="bienvenido ">
+                <br/>
+                    
+                <h:outputText value="#{bean1.user}"/>
+                <br></br>
+                    
+                <h:outputText value="#{bean2.id}"/>
+            </h:outputLabel>
+           
+            <p:commandButton  styleClass="boton1" value="desconectar" action="#{bean1.desconecta}" ajax="false"/>
+            
+            
+        </h:form>
+        
+       
+        
+        <h:form id="admin2_form1">
+            <p:messages for="mensajes" id="msgs1"/>
+            <p:calendar value="#{bean2.d1}"
+                        mode="inline"
+                required="true"
+                locale="es"
+                pattern="dd-MM-yyyy"
+                mindate="#{bean2.minDate}"
+                maxdate="#{bean2.maxDate}"
+                converterMessage="debes introducir una fecha válida"
+                requiredMessage="debes introducir una fecha"
+                stepMinute="60"
+                validatorMessage="no esta bien validado"
+                
+                >
+                <p:ajax event="dateSelect" update="admin2_form1"/>
+                
+                
+            </p:calendar>
+            
+            
+            <p:outputLabel value="horas disponibles" for="out3">
+            <p:selectOneMenu style="position: fixed;top: 89px;left: 320px" id="out3" value="#{bean2.horaSeleccionada}" >
+            
+                
+                <f:selectItems id="out4" value="#{bean2.listaHoras}" rendered="#{bean2.muestraMenu}"/>
+                    
+                
+            
+            
+            </p:selectOneMenu>
+            
+            </p:outputLabel>
+            
+            
+            <p:commandButton  value="enviar fecha" action="#{bean2.enviaFecha}" update="admin2_form1"/>
+            
+            
+            
+            
+            
+            
+            
+        </h:form>
+        
+        <h:form id="admin2_form2">
+            
+            <p:messages for="mensaje_insertar" id="msgs2"/>
+            <p:commandButton styleClass="boton2" value="inserta todas las fechas" action="#{bean2.insertaTodasFechas}" update="admin2_form2"/>
+            
+            
+            
+            
+            
+        </h:form>
+        
+        
+        <h:form id="admin2_form3">
+            
+            <p:dataTable id="t1" var="personas" value="#{bean2.listaPersonas}" rendered="#{bean2.muestraListaPersonas}" selection="#{bean2.personasel}" rowKey="#{personas.login}">
+            
+                <p:column headerText="nombre">
+                    
+                    
+                    <h:outputText value="#{personas.nombre}"/>
+                    
+                    
+                </p:column>
+                
+                <p:column headerText="login">
+                    
+                    <h:outputText value="#{personas.login}"/>
+                    
+                    
+                </p:column>
+                
+                
+                
+            <p:column selectionMode="multiple" style="width: 2%">
+                  
+                  
+              </p:column>
+            
+            
+            
+            
+            </p:dataTable>
+            
+            <p:commandButton value="muestra personas" action="#{bean2.muestraPersonas}" update="admin2_form3"/>
+            
+            <p:commandButton value="elimina usuario" action="#{bean2.eliminaUsuario()}" ajax="true" oncomplete="eliminado.show()" update="admin2_form3"/>
+            
+            
+            
+            <p:dialog widgetVar="eliminado" header="el usuario ha sido eliminado" closable="true" id="dia1"/> 
+            
+        </h:form>
+        
+        
+        
+        
+    </h:body>
+    
+    
+    
+    
+    
+</html>

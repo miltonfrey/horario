@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>gestión de reservas de horarios</title>
+        <h:outputStylesheet library="css" name="estilo.css"/>
+        <h:outputScript library="js" name="calendar_es.js"/>
+        
+        
+
+
+        
+    </h:head>
+    <h:body>
+        
+        
+        <p>
+            
+             bienvenido<br></br>
+    
+      <h:outputText value="#{bean2.p.nombre}"/>
+            
+        </p>
+        
+        
+        <h:form>
+            <p:menubar>
+           
+            
+                <p:menuitem value="mis fechas" action="#{bean2.reserva}" ajax="false" icon="calendar" />
+                <p:menuitem action="#{bean1.desconecta}" value="desconecta" ajax="false" icon="exit"/>
+                
+                
+            
+            
+            
+            
+            
+        </p:menubar>
+        
+        
+        </h:form>
+        
+        
+     
+        
+        
+      
+      
+      
+          
+          
+      
+      
+      <h:form id="admin2_form1" styleClass="form1">
+          <p:growl for="mensajes" id="msgs1" life="3000"/>
+            <p:calendar id="c1" value="#{bean2.d1}"
+                        mode="inline"
+                required="true"
+                locale="es"
+                pattern="dd-MM-yyyy"
+                mindate="#{bean2.minDate}"
+                maxdate="#{bean2.maxDate}"
+                converterMessage="debes introducir una fecha válida"
+                requiredMessage="debes introducir una fecha"
+                stepMinute="60"
+                validatorMessage="no esta bien validado"
+                
+                >
+                <p:ajax event="dateSelect" update="admin2_form1"/>
+                
+                
+            </p:calendar>
+         <p:message id="m1" for="c1"/>
+            
+            
+                <p:selectOneMenu style="position: absolute;top: 1px;left: 310px" id="out3" value="#{bean2.horaSeleccionada}" rendered="#{bean2.muestraMenu}" >
+            
+                
+                <f:selectItems id="out4" value="#{bean2.listaHoras}" rendered="#{bean2.muestraMenu}"/>
+                    
+                
+            
+            
+            </p:selectOneMenu>
+            
+            
+            
+            
+            
+            
+            
+         <p:commandButton  value="enviar fecha" action="#{bean2.enviaFecha}" ajax="false" icon="ok"/> 
+            
+            
+            
+            
+        </h:form>
+      
+      
+     
+          
+          
+      
+          
+          
+         
+          
+          
+          
+          
+     
+          
+          
+          
+     
+      
+      
+      
+      
+      
+      
+    </h:body>
+</html>
